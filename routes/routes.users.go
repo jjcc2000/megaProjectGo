@@ -2,13 +2,16 @@ package routes
 
 import (
 	"encoding/json"
+	"fmt"
 	"html/template"
 	"net/http"
 	"path/mod/db"
 	"path/mod/models"
+	"github.com/gorilla/mux"
 )
 
 var tmpl *template.Template
+
 
 func GetUsersHandles(w http.ResponseWriter, r *http.Request) {
 	//Need an interface to interact with the database
@@ -17,10 +20,28 @@ func GetUsersHandles(w http.ResponseWriter, r *http.Request) {
 	db.DB.Find(&Dt)
 	//Need a way to Template the HTML
 	tmpl = template.Must(template.ParseFiles("index.html"))
-	//Struct to test if the template works
-	tmpl.Execute(w,&Dt)
+	//Executes the template
+	err:=tmpl.Execute(w,&Dt)
+	if err != nil {
+		fmt.Println("There has been an error in the template creations",err)
+	}
 }
+func GetUser(w http.ResponseWriter, r *http.Request){
+	var Dt models.Users
+	vars := mux.Vars(r)
+	db.DB.First(&Dt,vars["id"])
+	if Dt.ID==0{
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte("That id does not Exist"))
+		return
+	}
+	tmpl = template.Must(template.ParseFiles("index.html"))
+	err:= tmpl.Execute(w,&Dt)
+	if err != nil {
+		fmt.Println("There is an error in the GetUser Method",err)
+	}
 
+}
 func CreateUsers(w http.ResponseWriter, r *http.Request){
 	var recievedUsers models.Users
 	json.NewDecoder(r.Body).Decode(&recievedUsers)
@@ -32,5 +53,4 @@ func CreateUsers(w http.ResponseWriter, r *http.Request){
 		w.Write([]byte("Create Users Failed"))
 		return 
 	}
-	json.NewEncoder(w).Encode(&recievedUsers)
 }

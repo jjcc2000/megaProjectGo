@@ -11,16 +11,17 @@
     <h1>Users List</h1>
     <table>
       <tr>
-        <th>Name</th>
-        <th>Handle</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
       </tr>
-      {{ range . }}
+      {{range .}}
       <tr>
-        <td>{{ .FirstName }}</td>
-        <td>{{ .LastName }}</td>
-        <td>{{ .Age }}</td>
+        <td>{{.FirstName}}</td>
+        <td>{{.LastName}}</td>
+        <td>{{.Age}}</td>
       </tr>
-      {{ end }}
+      {{end}}
     </table>
   </body>
 </html>

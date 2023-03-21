@@ -27,10 +27,10 @@ func GetUsersHandles(w http.ResponseWriter, r *http.Request) {
 	}
 }
 func GetUser(w http.ResponseWriter, r *http.Request){
-	var Dt models.Users
+	var Dt []models.Users
 	vars := mux.Vars(r)
 	db.DB.First(&Dt,vars["id"])
-	if Dt.ID==0{
+	if len(Dt)==0{
 		w.WriteHeader(http.StatusBadRequest)
 		w.Write([]byte("That id does not Exist"))
 		return
@@ -54,3 +54,18 @@ func CreateUsers(w http.ResponseWriter, r *http.Request){
 		return 
 	}
 }
+func DeleteUsers(w http.ResponseWriter, r *http.Request){
+	vars := mux.Vars(r)
+	var user  models.Users
+	json.NewDecoder(r.Body).Decode(&user)
+
+	db.DB.First(&user,vars["id"])
+	if user.ID==0{
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte("That id does not match any registered"))
+	}else{
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("The user has been deleted"))
+		db.DB.Unscoped().Delete(&user)
+	}
+}	

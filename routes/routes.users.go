@@ -40,7 +40,6 @@ func GetUser(w http.ResponseWriter, r *http.Request){
 	if err != nil {
 		fmt.Println("There is an error in the GetUser Method",err)
 	}
-
 }
 func CreateUsers(w http.ResponseWriter, r *http.Request){
 	var recievedUsers models.Users

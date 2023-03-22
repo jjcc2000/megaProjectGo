@@ -4,24 +4,26 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>goTemplate</title>
+    <link rel="stylesheet" href="\static\style.css" />
+    <title>Users</title>
   </head>
-
   <body>
     <h1>Users List</h1>
     <table>
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Age</th>
-      </tr>
-      {{range .}}
-      <tr>
-        <td>{{.FirstName}}</td>
-        <td>{{.LastName}}</td>
-        <td>{{.Age}}</td>
-      </tr>
-      {{end}}
+      <tbody>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Age</th>
+        </tr>
+        {{range .}}
+        <tr>
+          <td>{{.FirstName}}</td>
+          <td>{{.LastName}}</td>
+          <td>{{.Age}}</td>
+        </tr>
+        {{end}}
+      </tbody>
     </table>
   </body>
 </html>

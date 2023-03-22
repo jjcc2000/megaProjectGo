@@ -1,3 +1,3 @@
 # megaProjectGo
 all Methods add
-*Next display and responsinve design*
+forms and templates

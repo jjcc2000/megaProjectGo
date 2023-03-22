@@ -18,7 +18,8 @@ func main() {
 
 	r := mux.NewRouter()
 
-	r.HandleFunc("/submit-form",routes.SubmitFormHandler)
+	r.HandleFunc("/getForm",routes.SubmitFormHandler)
+	r.HandleFunc("/submit-form",routes.FormGetter)
 	r.HandleFunc("/", routes.GetUsersHandles).Methods("GET")
 	r.HandleFunc("/user/{id}",routes.GetUser).Methods("GET")
 	r.HandleFunc("/", routes.CreateUsers).Methods("POST")

@@ -5,16 +5,20 @@
   </head>
   <body>
     <form action="/submit-form" method="GET">
+      <h1>To add a users</h1>
       <label for="name">First Name:</label>
-      <input type="text" name="fName" id="fName" />
-
+      <input type="text" name="fName" id="fName" value="fName" />
       <label for="email">Last Name:</label>
-      <input type="text" name="lName" id="lName" />
-
+      <input type="text" name="lName" id="lName" value="lName" />
       <label for="email">Age:</label>
-      <input type="text" name="Age" id="Age" />
-
+      <input type="text" name="Age" id="Age" value="Age" />
       <button type="submit">Submit</button>
+    </form>
+    <form action="/delete-form" method="GET">
+      <h1>To deleted a User</h1>
+      <label for="idD">ID:</label>
+      <input type="text" name="idD" id="idD" />
+      <button type="submit">Submit Id</button>
     </form>
   </body>
 </html>

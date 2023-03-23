@@ -12,20 +12,17 @@ import (
 
 var tmpl *template.Template
 
-
-func GetUsersHandles(w http.ResponseWriter, r *http.Request) {
-	//Need an interface to interact with the database
+func FirstPage(w http.ResponseWriter, r *http.Request) {
 	var Dt []models.Users
-	//Looks for this struct in to the database
 	db.DB.Find(&Dt)
-	//Need a way to Template the HTML
 	tmpl = template.Must(template.ParseFiles("index.html"))
-	//Executes the template
 	err:=tmpl.Execute(w,&Dt)
 	if err != nil {
 		fmt.Println("There has been an error in the template creations",err)
 	}
 }
+
+//Methods That were used with PostMan
 func GetUser(w http.ResponseWriter, r *http.Request){
 	var Dt []models.Users
 	vars := mux.Vars(r)

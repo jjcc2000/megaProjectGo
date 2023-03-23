@@ -8,16 +8,22 @@
     <title>Users</title>
   </head>
   <body>
+    <div class="topContainer">
+      <h1>Select your Options</h1>
+      <button><a href="/form.html">Modified Users</a></button>
+    </div>
     <h1>Users List</h1>
     <table>
       <tbody>
         <tr>
+          <th>ID</th>
           <th>First Name</th>
           <th>Last Name</th>
           <th>Age</th>
         </tr>
         {{range .}}
         <tr>
+          <td>{{.Id}}</td>
           <td>{{.FirstName}}</td>
           <td>{{.LastName}}</td>
           <td>{{.Age}}</td>

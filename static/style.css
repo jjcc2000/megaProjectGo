@@ -5,3 +5,7 @@ body {
 h1 {
   text-align: center;
 }
+.topContainer {
+  margin: 0 auto;
+  padding: 0 7%;
+}

@@ -4,10 +4,20 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="\static\style.css" />
     <title>Document</title>
   </head>
   <body>
-    <h1 style="text-align: center">The data was safe in the database</h1>
-    <p>Name {{.FirsNamae}} LastName {{.LastName}} Age{{.Age}}</p>
+    <div class="topContainer">
+      <strong
+        ><h1 style="text-align: center">
+          The data was safe in the database
+        </h1></strong
+      >
+      <p>Id:{{.Id}}</p>
+      <p>Name:{{.FirstName}}</p>
+      <p>LastName:{{.LastName}}</p>
+      <p>Age:{{.Age}}</p>
+    </div>
   </body>
 </html>

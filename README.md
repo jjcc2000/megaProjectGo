@@ -1,4 +1,2 @@
 # megaProjectGo
-all Methods add
-backend Working 
-Missing Return New Html
+New Version with frontend Interactions

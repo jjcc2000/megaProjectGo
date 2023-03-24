@@ -63,6 +63,32 @@ func DeletedUsers(w http.ResponseWriter, r *http.Request){
 	fmt.Fprintln(w,"The user has been deleted")
 	w.WriteHeader(http.StatusOK)
 }
+//THansk Handlers
+func ThankHandlers(w http.ResponseWriter, r *http.Request){
+	var UserToShow models.Users
+	//You check if is a Get method == TO show the form 
+	if r.Method =="GET"{
+		fmt.Println("It was called by an Get Method")
+		TmplHobbies = template.Must(template.ParseFiles("thanks.html"))
+		TmplHobbies.Execute(w,nil)
+		return
+	}
+	//Takes the value that are in the form
+	r.ParseForm()
+	Id := r.FormValue("idD")
+	db.DB.First(&UserToShow,Id)
+	//Check if the User Exist
+	if UserToShow.ID ==0{
+		//The user does not exist
+		w.WriteHeader(http.StatusNotFound)
+		fmt.Println("No user has that Id")
+		fmt.Fprintln(w,"There is no match for that id")
+		return
+	}
+	//Si no es un method Get y si existe ese usuario
+	TmplHobbies = template.Must(template.ParseFiles("Thanks"))
+	TmplHobbies.Execute(w,&UserToShow)
+}
 
 
 

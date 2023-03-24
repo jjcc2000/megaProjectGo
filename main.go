@@ -24,7 +24,7 @@ func main() {
 	//When the deleted-form is called
 	r.HandleFunc("/delete-form",routes.DeletedUsers).Methods("GET")
 	//When the edite Form is called
-
+	r.HandleFunc("/update-form",routes.ThankHandlers)
 	
 	r.HandleFunc("/user/{id}",routes.GetUser).Methods("GET")
 	r.HandleFunc("/", routes.CreateUsers).Methods("POST")

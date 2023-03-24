@@ -9,15 +9,24 @@
   </head>
   <body>
     <div class="topContainer">
+      <form action="/getThanks" method="GET">
+        <h1>Show me this user</h1>
+        <label for="idD">ID:</label>
+        <input type="text" name="idD" id="idD" />
+        <button type="submit">Submit Id</button>
+      </form>
+
       <strong
         ><h1 style="text-align: center">
-          The data was safe in the database
+          The data if the user was checked should be Down Me
         </h1></strong
       >
+      {{if .}}
       <p>Id:{{.Id}}</p>
       <p>Name:{{.FirstName}}</p>
       <p>LastName:{{.LastName}}</p>
       <p>Age:{{.Age}}</p>
+      {{end}}
     </div>
   </body>
 </html>

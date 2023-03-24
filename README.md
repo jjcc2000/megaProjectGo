@@ -1,3 +1,3 @@
 # megaProjectGo
 Full Interaction with frontend 
-Missing Update Method
+Delete and Create MEthod
